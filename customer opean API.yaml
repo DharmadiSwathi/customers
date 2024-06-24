@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Customers",
+    "title":"Customers",
     "description": "API for managing customer data.",
     "version": "1.0.0"
   },
