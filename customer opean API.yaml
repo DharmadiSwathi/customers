@@ -33,7 +33,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
@@ -47,7 +47,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CustomerInput"
+                "$ref": "#/components/schemas/Customer"
               }
             }
           }
@@ -68,7 +68,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/BadRequest"
                 }
               }
             }
@@ -78,7 +78,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
@@ -115,7 +115,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/BadRequest"
                 }
               }
             }
@@ -125,7 +125,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/NotFound"
                 }
               }
             }
@@ -135,7 +135,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
@@ -163,7 +163,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/BadRequest"
                 }
               }
             }
@@ -173,7 +173,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/NotFound"
                 }
               }
             }
@@ -183,7 +183,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
@@ -207,7 +207,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CustomerUpdate"
+                "$ref": "#/components/schemas/Customer"
               }
             }
           }
@@ -228,7 +228,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/BadRequest"
                 }
               }
             }
@@ -238,7 +238,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/NotFound"
                 }
               }
             }
@@ -248,7 +248,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
@@ -276,102 +276,57 @@
           },
           "phoneNumber": {
             "type": "string",
-            "description": "Customer's phone number"
+            "description": "phone number"
           },
           "postCode": {
             "type": "string",
-            "description": "Customer's postal code"
+            "description": "postal code"
           },
           "dateOfBirth": {
             "type": "string",
             "format": "date",
-            "description": "Customer's date of birth"
-          }
-        },
-        "required": [
-          "id",
-          "firstName",
-          "lastName",
-          "phoneNumber",
-          "postCode",
-          "dateOfBirth"
-        ]
-      },
-      "CustomerInput": {
-        "type": "object",
-        "properties": {
-          "firstName": {
-            "type": "string",
-            "description": "first name"
-          },
-          "lastName": {
-            "type": "string",
-            "description": "last name"
-          },
-          "phoneNumber": {
-            "type": "string",
-            "description": "Customer's phone number"
-          },
-          "postCode": {
-            "type": "string",
-            "description": "Customer's postal code"
-          },
-          "dateOfBirth": {
-            "type": "string",
-            "format": "date",
-            "description": "Customer's date of birth"
-          }
-        },
-        "required": [
-          "firstName",
-          "lastName",
-          "phoneNumber",
-          "postCode",
-          "dateOfBirth"
-        ]
-      },
-      "CustomerUpdate": {
-        "type": "object",
-        "properties": {
-          "firstName": {
-            "type": "string",
-            "description": "first name"
-          },
-          "lastName": {
-            "type": "string",
-            "description": "last name"
-          },
-          "phoneNumber": {
-            "type": "string",
-            "description": "Customer's phone number"
-          },
-          "postCode": {
-            "type": "string",
-            "description": "Customer's postal code"
-          },
-          "dateOfBirth": {
-            "type": "string",
-            "format": "date",
-            "description": "Customer's date of birth"
+            "description": "date of birth"
           }
         }
       },
-      "Error": {
+      "BadRequest": {
         "type": "object",
         "properties": {
           "message": {
             "type": "string",
-            "description": "Error message"
+            "example": "bad request"
           },
           "code": {
             "type": "integer",
-            "description": "Error code"
+            "example": 400
           }
-        },
-        "required": [
-          "message",
-          "code"
-        ]
+        }
+      },
+      "InternalServerError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "internal server error"
+          },
+          "code": {
+            "type": "integer",
+            "example": 500
+          }
+        }
+      },
+      "NotFound": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Data not found"
+          },
+          "code": {
+            "type": "integer",
+            "example": 404
+          }
+        }
       }
     }
   }
